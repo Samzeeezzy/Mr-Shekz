@@ -135,3 +135,21 @@ if (searchToggle && searchPanel && searchInput) {
     if (event.key === 'Escape' && !searchPanel.hidden) closeSearch();
   });
 }
+
+
+// Hero portrait slideshow: visibly crossfade between the artist's images.
+const heroSlides = [...document.querySelectorAll('.hero-image .hero-slide')];
+if (heroSlides.length > 1) {
+  let activeHeroSlide = 0;
+  heroSlides.forEach((slide, index) => {
+    slide.classList.toggle('is-active', index === 0);
+    slide.setAttribute('aria-hidden', index === 0 ? 'false' : 'true');
+  });
+  window.setInterval(() => {
+    heroSlides[activeHeroSlide].classList.remove('is-active');
+    heroSlides[activeHeroSlide].setAttribute('aria-hidden', 'true');
+    activeHeroSlide = (activeHeroSlide + 1) % heroSlides.length;
+    heroSlides[activeHeroSlide].classList.add('is-active');
+    heroSlides[activeHeroSlide].setAttribute('aria-hidden', 'false');
+  }, 5500);
+}
