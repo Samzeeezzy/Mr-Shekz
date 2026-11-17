@@ -71,3 +71,67 @@ document.addEventListener('click', async event => {
     }
   }
 });
+
+
+// Search the artist's songs and albums from the header.
+const searchToggle = document.querySelector('.search-toggle');
+const searchPanel = document.querySelector('#site-search');
+const searchInput = document.querySelector('#site-search-input');
+const searchClose = document.querySelector('.search-close');
+const searchCount = document.querySelector('.search-results-count');
+const trackList = document.querySelector('.track-list');
+const releaseList = document.querySelector('.release-list');
+if (searchToggle && searchPanel && searchInput) {
+  const openSearch = () => {
+    searchPanel.hidden = false;
+    searchToggle.setAttribute('aria-expanded', 'true');
+    searchToggle.setAttribute('aria-label', 'Close music search');
+    searchInput.focus();
+  };
+  const closeSearch = () => {
+    searchPanel.hidden = true;
+    searchToggle.setAttribute('aria-expanded', 'false');
+    searchToggle.setAttribute('aria-label', 'Open music search');
+    searchInput.value = '';
+    filterMusic('');
+  };
+  const filterMusic = query => {
+    const term = query.trim().toLowerCase();
+    const rows = [
+      ...(trackList ? [...trackList.querySelectorAll('.track-row')] : []),
+      ...(releaseList ? [...releaseList.querySelectorAll('.release-row')] : [])
+    ];
+    let visible = 0;
+    rows.forEach(row => {
+      const match = !term || row.textContent.toLowerCase().includes(term);
+      row.classList.toggle('search-hidden', !match);
+      if (match) visible++;
+    });
+    let empty = document.querySelector('.search-empty');
+    if (!empty && trackList) {
+      empty = document.createElement('p');
+      empty.className = 'search-empty';
+      empty.textContent = 'No matching songs or albums found. Try another title.';
+      trackList.appendChild(empty);
+    }
+    if (empty) empty.hidden = !term || visible > 0;
+    if (searchCount) searchCount.textContent = term ? visible + ' matching release' + (visible === 1 ? '' : 's') : '';
+  };
+  searchToggle.addEventListener('click', () => searchPanel.hidden ? openSearch() : closeSearch());
+  searchClose?.addEventListener('click', closeSearch);
+  searchInput.addEventListener('input', () => filterMusic(searchInput.value));
+  searchInput.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeSearch();
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      document.querySelector('#music')?.scrollIntoView({behavior:'smooth'});
+    }
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === '/' && !['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) {
+      event.preventDefault();
+      openSearch();
+    }
+    if (event.key === 'Escape' && !searchPanel.hidden) closeSearch();
+  });
+}
