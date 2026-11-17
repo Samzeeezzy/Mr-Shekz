@@ -1,18 +1,15 @@
-# Mr. Shekz — Official Artist Website
+# Sheks JP — Official Music Website
 
-A premium, responsive dark editorial-style artist website for Mr. Shekz.
+A responsive dark editorial-style gospel music website for Sheks JP (also known as Shekwolo Musa JP), a Nigerian gospel music minister and singer based in Abuja.
 
 ## Included
-- Luxury dark visual direction with warm gold accents
-- Responsive navigation for desktop and mobile
-- Hero / artist introduction
-- Music releases and featured project section
-- Featured video modal and visual gallery
-- Artist story / about section
-- Upcoming events section
-- Merchandise teaser
-- Booking and social contact section
-- SEO basics, accessible labels, reduced-motion support
+- Responsive navigation and dark visual design with warm gold accents
+- Artist introduction and profile information
+- Featured album and linked catalogue
+- Links to Audiomack, Apple Music and YouTube
+- Official music video links for “Sabon Abu” and “You Are Great”
+- Ministry / event enquiry direction
+- SEO metadata and reduced-motion support
 
 ## Run locally
 Open `index.html` in a browser. No build step or package installation is required.
@@ -21,13 +18,12 @@ Open `index.html` in a browser. No build step or package installation is require
 1. Open the repository's **Settings → Pages**.
 2. Under **Build and deployment**, choose **Deploy from a branch**.
 3. Select the `main` branch and `/(root)` folder, then save.
-4. GitHub Pages will publish the site at the repository's Pages URL.
 
-## Before launch — replace placeholders
-- Replace the sample release titles and cover art with official music and artwork.
-- Add official YouTube / Vimeo video URLs and update the video modal in `script.js`.
-- Replace the gallery background images with approved Mr. Shekz photography.
-- Update the booking email and social profile links in `index.html`.
-- Add real event dates and merchandise product links when available.
+## Content notes
+- Music catalogue and profile links were researched from the artist's Audiomack and Apple Music profiles and linked YouTube videos.
+- The current artist portrait and album artwork areas are graphic placeholders, not photographs of the artist or official cover images. Replace them with approved original assets when supplied.
+- No booking email, upcoming event dates, or verified Instagram/TikTok profile links were available in the sources reviewed. These have not been invented.
+- The site links listeners to official platform pages; it does not currently host audio files or embed a streaming player.
 
-The current website is a frontend presentation. It does not include a backend, authentication, payment processing, booking database, or merchandise checkout. Those require a separate service and credentials.
+## Technical scope
+This is a static frontend. It does not include a backend, authentication, booking database, payment processing, or merchandise checkout.
