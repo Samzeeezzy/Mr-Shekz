@@ -83,3 +83,8 @@ h1,h2,h3,h4,.wordmark{font-family:'Manrope',sans-serif}
 @keyframes heroPortraitCycle{0%,20%{opacity:1;transform:scale(1.045)}25%,100%{opacity:0;transform:scale(1.09)}}
 @media(prefers-reduced-motion:reduce){.hero-slide{animation:none;opacity:0;transform:none}.hero-slide-one{opacity:1}}
 @media(max-width:680px){.hero-slide{background-position:58% 25%}.hero-slide:after{background:linear-gradient(90deg,rgba(0,0,0,.84),rgba(0,0,0,.28)),linear-gradient(0deg,rgba(0,0,0,.5),transparent 60%)}.hero-slide-two,.hero-slide-three,.hero-slide-four{background-position:58% 24%}}
+
+
+/* Subtle full-page Sheks JP portrait backdrop */
+body{background-color:#090909;background-image:linear-gradient(rgba(7,7,7,.91),rgba(7,7,7,.93)),url('https://i.scdn.co/image/ab6761610000e5ebf9f413a313228a921cd39c3e');background-position:center center;background-size:cover;background-attachment:fixed;background-repeat:no-repeat}
+@media(max-width:680px){body{background-position:58% center;background-attachment:scroll;background-image:linear-gradient(rgba(7,7,7,.93),rgba(7,7,7,.95)),url('https://i.scdn.co/image/ab6761610000e5ebf9f413a313228a921cd39c3e')}}
