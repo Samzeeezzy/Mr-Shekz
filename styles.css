@@ -88,3 +88,10 @@ h1,h2,h3,h4,.wordmark{font-family:'Manrope',sans-serif}
 /* Subtle full-page Sheks JP portrait backdrop */
 body{background-color:#090909;background-image:linear-gradient(rgba(7,7,7,.91),rgba(7,7,7,.93)),url('https://i.scdn.co/image/ab6761610000e5ebf9f413a313228a921cd39c3e');background-position:center center;background-size:cover;background-attachment:fixed;background-repeat:no-repeat}
 @media(max-width:680px){body{background-position:58% center;background-attachment:scroll;background-image:linear-gradient(rgba(7,7,7,.93),rgba(7,7,7,.95)),url('https://i.scdn.co/image/ab6761610000e5ebf9f413a313228a921cd39c3e')}}
+
+
+/* Explicit hero slideshow crossfade controlled by script.js */
+.hero-slide{animation:none!important;opacity:0;transition:opacity 1.35s ease-in-out;transform:scale(1.045)}
+.hero-slide.is-active{opacity:1;z-index:1}
+.hero-slide:not(.is-active){z-index:0}
+@media(prefers-reduced-motion:reduce){.hero-slide{transition:none;transform:none}.hero-slide:not(.hero-slide-one){display:none}.hero-slide-one{opacity:1}}
