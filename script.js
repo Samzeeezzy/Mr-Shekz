@@ -35,3 +35,39 @@ if (modal && openVideo && closeVideo) {
 }
 
 // Add the official video embed here when it is supplied. The current modal is an intentional placeholder.
+
+
+// Share every song or album using the native share sheet, with a clipboard fallback.
+document.addEventListener('click', async event => {
+  const button = event.target.closest('[data-share-url]');
+  if (!button) return;
+  const url = button.dataset.shareUrl;
+  const title = button.dataset.shareTitle || 'Sheks JP';
+  const shareData = {title, text: 'Listen to ' + title, url};
+  try {
+    if (navigator.share) {
+      await navigator.share(shareData);
+    } else if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(url);
+      button.textContent = '✓ Copied';
+      window.setTimeout(() => { button.textContent = '↗ Share'; }, 1800);
+    } else {
+      const field = document.createElement('textarea');
+      field.value = url;
+      field.setAttribute('readonly', '');
+      field.style.position = 'fixed';
+      field.style.opacity = '0';
+      document.body.appendChild(field);
+      field.select();
+      document.execCommand('copy');
+      field.remove();
+      button.textContent = '✓ Copied';
+      window.setTimeout(() => { button.textContent = '↗ Share'; }, 1800);
+    }
+  } catch (error) {
+    if (error && error.name !== 'AbortError') {
+      button.textContent = 'Share unavailable';
+      window.setTimeout(() => { button.textContent = '↗ Share'; }, 1800);
+    }
+  }
+});
