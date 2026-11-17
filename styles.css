@@ -71,3 +71,15 @@ h1,h2,h3,h4,.wordmark{font-family:'Manrope',sans-serif}
 .track-row.search-hidden,.release-row.search-hidden{display:none}
 .search-empty{padding:24px 0;color:var(--muted);font-size:12px;border-bottom:1px solid var(--line)}
 @media(max-width:680px){.main-nav{padding-right:7%;padding-left:7%}.search-toggle{position:absolute;right:62px;top:15px;width:38px;height:38px}.site-search{top:70px;left:0;right:0;width:100%;padding:22px 7%;border-left:0;border-right:0}.main-nav.open{padding-top:28px}}
+
+/* Animated hero portrait carousel — official Sheks JP artist imagery */
+.hero-image{background:none;isolation:isolate}
+.hero-slide{position:absolute;inset:0;background-repeat:no-repeat;background-position:center 28%;background-size:cover;opacity:0;animation:heroPortraitCycle 32s infinite ease-in-out;will-change:opacity,transform;transform:scale(1.045)}
+.hero-slide:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.94) 0%,rgba(0,0,0,.66) 43%,rgba(0,0,0,.14) 100%),linear-gradient(0deg,rgba(0,0,0,.42),transparent 55%)}
+.hero-slide-one{background-image:url('https://i.scdn.co/image/ab6761610000e5ebf9f413a313228a921cd39c3e');animation-delay:0s}
+.hero-slide-two{background-image:url('https://i.audiomack.com/sheksmusicnationwide/859a537557.webp?width=1200');background-position:center 23%;animation-delay:8s}
+.hero-slide-three{background-image:url('https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/16/72/ee/1672ee1f-0a74-69c4-0d1a-e700efc5e99f/197077189964_cover.jpg/3000x3000bb.jpg');background-position:center 24%;animation-delay:16s}
+.hero-slide-four{background-image:url('https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f3/67/dc/f367dc54-5f66-674a-c026-d20b1cd9d1ea/artwork.jpg/800x800cc.jpg');background-position:center 25%;animation-delay:24s}
+@keyframes heroPortraitCycle{0%,20%{opacity:1;transform:scale(1.045)}25%,100%{opacity:0;transform:scale(1.09)}}
+@media(prefers-reduced-motion:reduce){.hero-slide{animation:none;opacity:0;transform:none}.hero-slide-one{opacity:1}}
+@media(max-width:680px){.hero-slide{background-position:58% 25%}.hero-slide:after{background:linear-gradient(90deg,rgba(0,0,0,.84),rgba(0,0,0,.28)),linear-gradient(0deg,rgba(0,0,0,.5),transparent 60%)}.hero-slide-two,.hero-slide-three,.hero-slide-four{background-position:58% 24%}}
